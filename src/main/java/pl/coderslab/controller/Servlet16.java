@@ -15,7 +15,8 @@ public class Servlet16 extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String header = getClientIpAddress(request);
+//        String header = getClientIpAddress(request);
+        String header = request.getRemoteAddr();
         String browser = request.getHeader("User-Agent");
 
         response.getWriter().append("Ip: " + header + "\n" + browser + "\n" + LocalDateTime.now().toString()); // adresy ip v6 daja local 000000...1
