@@ -36,18 +36,9 @@ public class Cookie4Show extends HttpServlet {
                     .append(" | to detele this cookie click link -> ")
                     .append(link)
                     .append("<br>");
-
-//            String cookieName = c.getName();
-//            wr.append()
-//                    .append(cookieName)
-//                    .append("'> delete cookie with name: ")
-//                    .append(cookieName)
-//                    .append(" - value: ")
-//                    .append(c.getValue())
-//                    .append("</a><br>");
         }
     }
 }
 
-// try to understand this in home
+
 

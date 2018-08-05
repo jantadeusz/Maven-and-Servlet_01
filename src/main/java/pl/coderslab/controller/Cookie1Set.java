@@ -1,5 +1,7 @@
 package pl.coderslab.controller;
 
+import pl.coderslab.service.CookieService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -23,7 +25,11 @@ public class Cookie1Set extends HttpServlet {
         response.addCookie(cookie);
 
         response.getWriter().append("Cookie set");
-
-
+        // jsp Exercise 4 in school
+        try {
+            CookieService.cookieAdd(response, "foo", "bar", 24 * 3600);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

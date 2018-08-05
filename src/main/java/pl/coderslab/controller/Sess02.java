@@ -13,21 +13,26 @@ import java.util.Arrays;
 @WebServlet(name = "Sess02", urlPatterns = "/sess02")
 public class Sess02 extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        Double[] tablica;
+
         HttpSession sess = request.getSession();
-        Double[] grades = (Double[]) sess.getAttribute("grades");
-        if(grades == null)
+        Double[] grades = (Double[]) sess.getAttribute("grades"); // deklaracja i ze bede ja bral z sesji
+        // jesli obiekty nie sa zainicjalizowane t sa null
+
+        if (grades == null)
             grades = new Double[0];
-
         try {
+
             double grade = Double.parseDouble(request.getParameter("grade"));
-            if(grade<1 || grade>6) throw new Exception("Wrong value");
+            if (grade < 1 || grade > 6) throw new Exception("Wrong value");
 
-            grades = Arrays.copyOf(grades,grades.length+1);
-            grades[grades.length-1] = grade;
+            grades = Arrays.copyOf(grades, grades.length + 1);
+            grades[grades.length - 1] = grade;
 
-            sess.setAttribute("grades",grades);
+            sess.setAttribute("grades", grades);
 
-        }catch(Exception e){
+        } catch (Exception e) {
             response.getWriter().append(e.getMessage());
         }
 
@@ -36,29 +41,28 @@ public class Sess02 extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         Writer wr = response.getWriter();
         HttpSession sess = request.getSession();
 
-
         wr.append(" <form method=\"post\" action=\"/sess02\">\n" +
                 "        <input type=\"text\" name=\"grade\" placeholder='grade'>\n" +
                 "        <input type=\"submit\" value=\"Add\">\n" +
-                "    </form>");
-
+                "   </form>");
 
         Double[] grades = (Double[]) sess.getAttribute("grades");
-        if(grades!=null) {
+        if (grades != null) {
             double sum = 0;
             wr.append("<h3>Grades</h3>");
             wr.append("<ul>");
-            for(Double grade : grades){
+            for (Double grade : grades) {
                 sum += grade;
                 wr.append("<li>").append(String.valueOf(grade)).append("</li>");
             }
             wr.append("</ul>");
-            wr.append("Avg: ").append(String.valueOf(sum/grades.length));
+            wr.append("Avg: ").append(String.valueOf(sum / grades.length));
         }
 
     }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/cookie6" method="post">
+    Select background color:
+    <select name="backgroundColor">
+        <option value="red" style="background-color: red"> Czerwony</option>
+        <option value="black" style="background-color: black"> Czarny</option>
+        <option value="green" style="background-color: green"> Zielony</option>
+        <option value="yellow" style="background-color: yellow"> Żółty</option>
+        <option value="" style=""> Brak koloru </option>
+        <!-- ostatnia opcja jest po to żeby logika odpowiedzialna za obsługę nulla miala szanse zaistniec w servlecie -->
+    </select>
+
+    Select font color:
+    <select name="fontColor">
+        <option value="red" style="background-color: red"> Czerwony</option>
+        <option value="black" style="background-color: black"> Czarny</option>
+        <option value="green" style="background-color: green"> Zielony</option>
+        <option value="yellow" style="background-color: yellow"> Żółty</option>
+        <option value="" style=""> Brak koloru </option>
+    </select>
+    <input type="submit" value="Send"/>
+</form>
+
+
+</body>
+</html>
